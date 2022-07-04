@@ -1,54 +1,73 @@
-let cantidadEntradas=document.getElementById("cantidadEntradas")
-let respuesta=document.getElementById("respuesta");
-let artistas=document.getElementById("artistas");
 
-artistas.addEventListener("onchange", respuesta1)
-function respuesta1(){
-    if(artistas=="Los Tipitos"||"Airbag"){
-    respuesta.innerHTML="Entradas disponibles"
+/*******************************ARTISTAS****************************************/
+
+document.getElementById("agregar1").addEventListener("click", funcionArtistas);
+function funcionArtistas(){
+    let artista=document.getElementById("artista").value.toLowerCase;
+    if(artista=="los tipitos" || "airbag"){
+        document.getElementById("respuesta").innerText="Entradas disponibles"
     }
     else{
-    respuesta.innerHTML="Entradas agotadas"
+        document.getElementById("respuesta").innerText="Entradas agotadas"
     }
-    }
-    respuesta1();
-
-
-    cantidadEntradas.addEventListener("onchange", respuesta2)
-    function respuesta2(){
-        if(cantidadEntradas<=3){
-        respuesta.innerHTML="Ya tienes tus entradas"
-        }
-        else{
-        respuesta.innerHTML="Entradas agotadas"
-        }
-        }
-        respuesta2();
-
-
-
-/*cantidadEntradas.onchange = ()=>{
-    respuesta.innerHTML = artistas.onchange = ()=>{
-        function artistas(){
-            if(artistas=="Los Tipitos"||"Airbag"){
-            alert ("Entradas disponibles")
-            
-            }
-            else{
-            alert("Entradas agotadas")
-            }
-            }
-            artista()
-    }
+    let enJson=JSON.stringify(artista)
+    localStorage.setItem("artistas", artista)
 }
 
-/*cantidadEntradas.onchange = ()=>{
-    respuesta.innerHTML = function artistasEntradas(){
-        if(cantidadEntradas<=3){
-        alert ("Ya tienes tus entradas")
-        }
-        else{
-        alert("Has excedido el número permitido de entradas por persona")
-        }
-        }
-        artistaEntrada*/
+/*******************************FECHAS****************************************/
+
+document.getElementById("agregar2").addEventListener("click", funcionFechas);
+function funcionFechas(){
+    let artista=document.getElementById("artista").value.toLowerCase;
+    let fecha=document.getElementById("fecha").value;
+    if(artista=="los tipitos" && fecha=="17/07/2022"){
+        document.getElementById("repuesta").innerText="Los Tipitos 17/07/2022"
+    }
+    else if(artista=="airbag" && fecha=="23/07/2022"){
+        document.getElementById("respuesta").innerText="Airbag 23/07/2022"
+    }
+    else{
+        document.getElementById("respuesta").innerText="Entradas agotadas"
+    }
+    let enJson1=JSON.stringify(fecha)
+    localStorage.setItem("fechas", fecha)
+}
+
+
+/*******************************ENTRADAS****************************************/
+
+document.getElementById("agregar3").addEventListener("click", funcionEntradas);
+function funcionEntradas(){
+    let entrada=document.getElementById("entrada").value;   
+    if(entrada<=3){
+        document.getElementById("respuesta").innerText="Ya tienes tus entradas!"
+    }
+    else{
+        document.getElementById("respuesta").innerText="Has excedido el numero disponible de entradas por persona"
+    }
+    let enJson2=JSON.stringify(entrada)
+    localStorage.setItem("entradas", entrada)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
